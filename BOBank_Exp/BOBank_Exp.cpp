@@ -1,8 +1,5 @@
-// BOBank_Exp.cpp : Version 01
-// Bad Code Version
-// There are at least eight bugs in this program. See if you can find them.
-// CORRECTED VERSION
-
+// BOBank_Exp.cpp : Version 02
+// Interger/Real Calculation Version
 
 #include <iostream>
 #include <string>
@@ -10,6 +7,10 @@ using namespace std;
 
 int numberPlayers, startCash;
 string Player1, Player2, Player3, Player4, Player5, Player6;
+int turnMinutes, turnSeconds;
+int secondsPerMinute = 60;
+double turnTime;
+
 
 int main()
 {
@@ -37,6 +38,11 @@ int main()
     cout << " 4: " << Player4 << endl;
     cout << " 5: " << Player5 << endl;
     cout << " 6: " << Player6 << endl;
+
+    cout << "Enter the maximum time per term is format minute space seconds: ";
+    cin >> turnMinutes >> turnSeconds;
+    turnTime = turnMinutes + turnSeconds / secondsPerMinute;
+    cout << "Turn time is " << turnTime << " minutes.\n";
 
     return 0;
 }
