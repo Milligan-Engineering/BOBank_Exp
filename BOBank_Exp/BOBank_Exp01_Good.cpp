@@ -1,13 +1,15 @@
 // BOBank_Exp.cpp : Version 01
 // Bad Code Version
 // There are at least eight bugs in this program. See if you can find them.
+// CORRECTED VERSION
+
 
 #include <iostream>
 #include <string>
 using namespace std;
 
 int numberPlayers, startCash;
-string Player1, Player2, Player3, Player4, Player5, Player6 ;
+string Player1, Player2, Player3, Player4, Player5, Player6;
 
 int main()
 {
@@ -15,6 +17,7 @@ int main()
     cout << "Enter the number of players: ";
     cin >> numberPlayers;
     startCash = 1500 / numberPlayers;
+    cout << "Each player will start with $" << startCash << " in cash. \n";
     cout << "Enter player 1 name: ";
     cin >> Player1;
     cout << "Enter player 2 name: ";

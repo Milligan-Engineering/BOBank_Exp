@@ -2,18 +2,19 @@
 // Bad Code Version
 // There are at least eight bugs in this program. See if you can find them.
 
-#include <iostream>
+#include <iostream>;
 #include <string>
 using namespace std;
 
 int numberPlayers, startCash;
-string Player1, Player2, Player3, Player4, Player5, Player6, ;
+string Player1, Player2, Player3, Player4, Player5, Player6, 
 
 int main()
 {
     cout << "Welcome to the B&O Banker Program\n";
     cout << "Enter the number of players: ";
     startCash = 1500 / numberPlayers;
+    cout << "Each player will start with $" << startCash << " in cash. \n";
     cin >> numberPlayers;
     cout << "Enter player 1 name: ";
     cin >> Player1;
