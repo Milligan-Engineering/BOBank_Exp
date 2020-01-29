@@ -15,7 +15,7 @@ double turnTime;
 int main()
 {
     cout << "Welcome to the B&O Banker Program\n";
-    cout << "Enter the number of players: ";
+/*    cout << "Enter the number of players: ";
     cin >> numberPlayers;
     startCash = 1500 / numberPlayers;
     cout << "Each player will start with $" << startCash << " in cash. \n";
@@ -37,12 +37,12 @@ int main()
     cout << " 3: " << Player3 << endl;
     cout << " 4: " << Player4 << endl;
     cout << " 5: " << Player5 << endl;
-    cout << " 6: " << Player6 << endl;
+    cout << " 6: " << Player6 << endl;*/
 
-    cout << "Enter the maximum time per term is format minute space seconds: ";
+    cout << "Enter the maximum time per term in minute and seconds: ";
     cin >> turnMinutes >> turnSeconds;
     turnTime = turnMinutes + turnSeconds / secondsPerMinute;
-    cout << "Turn time is " << turnTime << " minutes.\n";
+    cout << "Turn time is " << turnMinutes << " minutes and " << turnSeconds << " seconds or " << turnTime << " minutes.\n";
 
     return 0;
 }
