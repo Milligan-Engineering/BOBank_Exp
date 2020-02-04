@@ -6,7 +6,6 @@
 //Version 3b: Incorporates good programming practices
 //Last Changed: 02/04/2019
 
-
 #include <iostream>
 #include <string>
 using namespace std;
