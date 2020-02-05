@@ -52,13 +52,12 @@ int main()
     cout << "Each player will start with $" << startCash << " in cash. \n";
     // Initialize player cash
   
-    i = 0;
-    while (i<numberPlayers)
+    int c = 0;
+    while (c < numberPlayers)
     {
-     
-        playerCash[i] = startCash;
-        i++;
-  
+        playerCash[c] = startCash;
+        cout << playerName[c] << " " << "will start with" << " $ " << playerCash[c] << endl ;
+        c++;
     }
 
     /*
