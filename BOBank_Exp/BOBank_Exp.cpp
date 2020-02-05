@@ -47,15 +47,19 @@ int main()
     cout << " 5: " << playerName[4] << endl;
     cout << " 6: " << playerName[5] << endl;
 
+  
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
     // Initialize player cash
-    playerCash[0] = startCash;
-    playerCash[1] = startCash;
-    playerCash[2] = startCash;
-    playerCash[3] = startCash;
-    playerCash[4] = startCash;
-    playerCash[5] = startCash;
+  
+    i = 0;
+    while (i<numberPlayers)
+    {
+     
+        playerCash[i] = startCash;
+        i++;
+  
+    }
 
     /*
     cout << "Enter the maximum time per term minutes: ";
