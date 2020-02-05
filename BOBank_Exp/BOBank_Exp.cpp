@@ -38,8 +38,14 @@ int main()
         cin >> playerName[i];
         i++;
     }
-    
     cout << "These are the players:\n";
+    int k = 0;
+    while (k < numberPlayers)
+    {
+        cout << k + 1 << ": " << playerName[k] << endl;
+        k++;
+    }
+    /*cout << "These are the players:\n";
     cout << " 1: " << playerName[0] << endl;
     cout << " 2: " << playerName[1] << endl;
     cout << " 3: " << playerName[2] << endl;
