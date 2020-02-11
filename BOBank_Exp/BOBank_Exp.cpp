@@ -45,19 +45,10 @@ int main()
         cout << k + 1 << ": " << playerName[k] << endl;
         k++;
     }
-    /*cout << "These are the players:\n";
-    cout << " 1: " << playerName[0] << endl;
-    cout << " 2: " << playerName[1] << endl;
-    cout << " 3: " << playerName[2] << endl;
-    cout << " 4: " << playerName[3] << endl;
-    cout << " 5: " << playerName[4] << endl;
-    cout << " 6: " << playerName[5] << endl;
-
-  
+   
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
     // Initialize player cash
-  
     int c = 0;
     while (c < numberPlayers)
     {
