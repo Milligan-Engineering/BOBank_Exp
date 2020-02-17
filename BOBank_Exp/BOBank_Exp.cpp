@@ -42,7 +42,7 @@ int main()
     //Sort names alphabetically (poorly)
     for (int j = 0; j <= numberPlayers; j++)
     {
-        for (int i = 0; i <= numberPlayers - i; i++)
+        for (int i = 0; i <= numberPlayers - j; i++)
         {
             if (playerName[i] > playerName[i + 1])
             {
@@ -62,12 +62,11 @@ int main()
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
     // Initialize player cash
-    for (int a = 0; b <= numberPlayers; c++);
+    for (int i = 0; i <= numberPlayers; i++);
     {
-        b = c + 1;
-        playerCash[c] = startCash;
-        cout << playerName[c] << " " << "will start with" << " $ " << playerCash[c] << endl ;
-        a = b - 1;
+    
+        playerCash[i] = startCash;
+        cout << playerName[i] << " " << "will start with" << " $ " << playerCash[i] << endl ;
     }
 
     return 0;
