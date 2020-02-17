@@ -32,7 +32,7 @@ int main()
     }
 
     // Enter player names
-    int i=0; // Going to use "i" as a counter, exception to declaring before main
+    // Going to use "i" as a counter, exception to declaring before main
     for (int i = 0; i < numberPlayers; i++)
     {
         cout << "Enter player " << i+1 << " name: ";
@@ -46,27 +46,27 @@ int main()
         {
             if (playerName[i] > playerName[i + 1])
             {
-                temp = playerName[i];
-                playerName[i] = playerName[i + 1];
-                playerName[i + 1] = temp;
+            temp = playerName[i];
+            playerName[i] = playerName[i + 1];
+            playerName[i + 1] = temp;
+       
             }
-        }
+          }   
     }
 
     cout << "These are the players:\n";
-    for (int k = 1; k <= numberPlayers; k++)
+    for (int k = 0; k < numberPlayers; k++)
     {
-        cout << k << ": " << playerName[k-1] << endl;
+        cout << k+1 << ": " << playerName[k] << endl;
     }
 
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
     // Initialize player cash
-    for (int i = 0; i <= numberPlayers; i++);
+    for (int c = 0; c <= numberPlayers; c++)
     {
-    
-        playerCash[i] = startCash;
-        cout << playerName[i] << " " << "will start with" << " $ " << playerCash[i] << endl ;
+        playerCash[c] = startCash;
+        cout << playerName[c] << " " << "will start with" << " $ " << playerCash[c] << endl ;
     }
 
     return 0;
