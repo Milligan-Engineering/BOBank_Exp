@@ -14,8 +14,13 @@
 
 using namespace std;
 
+//Function Declaration
+int printPlayerInfo(int numberPlayersVal);
+//Precondition: The number of players is passed to function as an integer. Also there is data in arrays playerName and playerCash.
+//Postcondition: The player names and amount of their cash is printed out. The maximum abount of cash is returned.
+
 const int MIN_PLAYERS = 3;
-const int MAX_PLAYERS = 60;
+const int MAX_PLAYERS = 6;
 int numberPlayers, startCash, iTemp;
 string temp;
 string playerName[MAX_PLAYERS];
@@ -43,14 +48,12 @@ int main()
         cin >> playerName[i];
     }
     
-    cout << "These are the players:\n";
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        cout << i+1 << ": " << playerName[i] << endl;
-    }
+    //Function Call
+    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
    
     // Seed random variable
-    srand(time(0));
+    long int currentTime = static_cast<long int>(time(0)); //Generate random seed
+    srand(currentTime);
 
     //Assign random number to players
     for (int i = 0; i < numberPlayers; i++)
@@ -75,12 +78,8 @@ int main()
         }
     }
 
-    cout << "These are the players (and random number) in random order:\n";
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        cout << i + 1 << ": " << playerName[i] << "("<<playerCash[i]<<")" << endl;
-    }
-
+    //Function Call
+    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
 
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
@@ -88,8 +87,26 @@ int main()
     for (int i = 0; i < numberPlayers; i++)
     {
         playerCash[i] = startCash;
-        cout << playerName[i] << " " << "will start with" << " $ " << playerCash[i] << endl ;
     }
 
+ 
+    //Function Call
+    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
     return 0;
+}
+
+//Function Definition
+int printPlayerInfo(int numberPlayersVal)
+{
+    //local variables are numberPlayersVal and maxCash
+    int maxCash = 0;
+    for (int i = 0; i < numberPlayersVal; i++)
+    {
+        cout << i + 1 << ": " << playerName[i] << " ($" << playerCash[i] << ")" << endl;
+        if (maxCash < playerCash[i])
+        {
+            maxCash = playerCash[i];
+        }
+    }
+    return(maxCash);
 }
