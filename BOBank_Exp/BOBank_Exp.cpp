@@ -48,6 +48,9 @@ int main()
     {
         cout << i+1 << ": " << playerName[i] << endl;
     }
+   
+    // Seed random variable
+    srand(time(0));
 
     //Assign random number to players
     for (int i = 0; i < numberPlayers; i++)
