@@ -12,7 +12,7 @@ using namespace std;
 
 const int MIN_PLAYERS = 3;
 const int MAX_PLAYERS = 6;
-int numberPlayers, startCash, a,b,c;
+int numberPlayers, startCash, iTemp;
 string temp;
 string playerName[MAX_PLAYERS];
 int playerCash[MAX_PLAYERS];
@@ -40,16 +40,15 @@ int main()
     }
     
     //Sort names alphabetically (poorly)
-    for (int j = 0; j <= numberPlayers; j++)
+    for (int j = 0; j < numberPlayers; j++)
     {
-        for (int i = 0; i <= numberPlayers - j; i++)
+        for (int i = 0; i < numberPlayers - j; i++)
         {
             if (playerName[i] > playerName[i + 1])
             {
             temp = playerName[i];
             playerName[i] = playerName[i + 1];
             playerName[i + 1] = temp;
-       
             }
           }   
     }
@@ -59,6 +58,34 @@ int main()
     {
         cout << k+1 << ": " << playerName[k] << endl;
     }
+
+    //Assign random number to players
+    for (int i = 0; i < numberPlayers; i++)
+    {
+        playerCash[i] = rand();
+    }
+
+    // Sort by random numbers
+    for (int j = 0; j < numberPlayers; j++)
+    {
+        for (int i = 0; i < numberPlayers - j; i++)
+        {
+            if (playerCash[i] > playerCash[i + 1])
+            {
+                iTemp = playerCash[i];
+                playerCash[i] = playerCash[i + 1];
+                playerCash[i + 1] = iTemp;
+
+            }
+        }
+    }
+
+    cout << "These are the players:\n";
+    for (int k = 0; k < numberPlayers; k++)
+    {
+        cout << k + 1 << ": " << playerName[k] << endl;
+    }
+
 
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
