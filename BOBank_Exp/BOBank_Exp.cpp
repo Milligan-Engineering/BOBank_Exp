@@ -8,10 +8,14 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
+
+
 using namespace std;
 
 const int MIN_PLAYERS = 3;
-const int MAX_PLAYERS = 6;
+const int MAX_PLAYERS = 60;
 int numberPlayers, startCash, iTemp;
 string temp;
 string playerName[MAX_PLAYERS];
@@ -58,8 +62,11 @@ int main()
         {
             if (playerCash[j] > playerCash[j + 1])
             {
+                temp = playerName[j];
                 iTemp = playerCash[j];
+                playerName[j] = playerName[j + 1];
                 playerCash[j] = playerCash[j + 1];
+                playerName[j + 1] = temp;
                 playerCash[j + 1] = iTemp;
             }
         }
