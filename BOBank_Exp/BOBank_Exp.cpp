@@ -16,7 +16,8 @@ using namespace std;
 
 //Function Declaration
 int printPlayerInfo(int numberPlayersVal);
-//Precondition: The number of players is passed to function as an integer. Also there is data in arrays playerName and playerCash.
+//Precondition: The number of players is passed to function as an integer. Also there is data in arrays 
+//playerName and playerCash.
 //Postcondition: The player names and amount of their cash is printed out. The maximum abount of cash is returned.
 
 const int MIN_PLAYERS = 3;
@@ -44,13 +45,13 @@ int main()
     // Going to use "i" as a counter, exception to declaring before main
     for (int i = 0; i < numberPlayers; i++)
     {
-        cout << "Enter player " << i+1 << " name: ";
+        cout << "Enter player " << i + 1 << " name: ";
         cin >> playerName[i];
     }
-    
+
     //Function Call
     cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
-   
+
     // Seed random variable
     long int currentTime = static_cast<long int>(time(0)); //Generate random seed
     srand(currentTime);
@@ -89,7 +90,7 @@ int main()
         playerCash[i] = startCash;
     }
 
- 
+
     //Function Call
     cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
     return 0;
