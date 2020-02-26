@@ -56,8 +56,7 @@ int main()
 
     //Function Call
     cout << "Players \n";
-   printList(playerName, 
-       numberPlayers);
+    printList(playerName,numberPlayers);
 
     // Seed random variable
     long int currentTime = static_cast<long int>(time(0)); //Generate random seed
