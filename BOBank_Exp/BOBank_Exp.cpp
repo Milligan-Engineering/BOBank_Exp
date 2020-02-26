@@ -2,7 +2,8 @@
 //Author: JJ Giesey
 //Email Address: jjgiesey@milligan.edu
 //Term Project
-//Description: This program handles banking duties in the B&O Board Game. Bad Loop Version
+//Description: This program handles banking duties in the B&O Board Game.
+Bad Loop Version
 //Version BL
 //Last Changed: 02/11/2020
 
