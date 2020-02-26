@@ -3,9 +3,8 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game.
-Bad Loop Version
-//Version BL
-//Last Changed: 02/11/2020
+//Version Overloaded Functions
+//Last Changed: 02/25/2020
 
 #include <iostream>
 #include <string>
@@ -16,10 +15,15 @@ Bad Loop Version
 using namespace std;
 
 //Function Declaration
-int printPlayerInfo(int numberPlayersVal);
-//Precondition: The number of players is passed to function as an integer. Also there is data in arrays 
-//playerName and playerCash.
-//Postcondition: The player names and amount of their cash is printed out. The maximum abount of cash is returned.
+void printList(string names[],int values[], int numberVals);
+//Precondition: A list of strings to be printed and an integer value associated with each string
+//is given along with the number of strings.
+//Postcondition: The strings followed by the value in parentheses are printed on separate lines
+//preceded by an index staring with one.
+
+void printList(string names[], int numberVals);
+//Precondition: A list of strings to be printed is given along with the number of strings.
+//Postcondition: The strings are printed on separate lines preceded by an index staring with one.
 
 const int MIN_PLAYERS = 3;
 const int MAX_PLAYERS = 6;
@@ -51,7 +55,8 @@ int main()
     }
 
     //Function Call
-    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
+    cout << "Players \n";
+    printList(playerName,numberPlayers);
 
     // Seed random variable
     long int currentTime = static_cast<long int>(time(0)); //Generate random seed
@@ -81,7 +86,8 @@ int main()
     }
 
     //Function Call
-    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
+    cout << "Players and (random number) \n";
+    printList(playerName, playerCash, numberPlayers);
 
     startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
     cout << "Each player will start with $" << startCash << " in cash. \n";
@@ -93,22 +99,26 @@ int main()
 
 
     //Function Call
-    cout << "The maximum cash is: $" << printPlayerInfo(numberPlayers) << endl;
+    cout << "Players and (cash) \n";
+    printList(playerName, playerCash, numberPlayers);
     return 0;
 }
 
-//Function Definition
-int printPlayerInfo(int numberPlayersVal)
+//Function Definitions
+void printList(string names[], int values[], int numberVals)
 {
-    //local variables are numberPlayersVal and maxCash
-    int maxCash = 0;
-    for (int i = 0; i < numberPlayersVal; i++)
+    for (int i = 0; i < numberVals; i++)
     {
-        cout << i + 1 << ": " << playerName[i] << " ($" << playerCash[i] << ")" << endl;
-        if (maxCash < playerCash[i])
-        {
-            maxCash = playerCash[i];
-        }
+        cout << i + 1 << ": " << names[i] << " (" << values[i] << ")" << endl;
     }
-    return(maxCash);
+    return;
+}
+
+void printList(string names[], int numberVals)
+{
+    for (int i = 0; i < numberVals; i++)
+    {
+        cout << i + 1 << ": " << names[i] <<  endl;
+    }
+    return;
 }
