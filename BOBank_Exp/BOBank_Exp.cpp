@@ -3,8 +3,9 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game.
-//Version Overloaded Functions
-//Last Changed: 02/25/2020
+//Pre Structures
+//Last Changed: 04/14/2020
+
 
 #include <iostream>
 #include <string>
@@ -14,111 +15,111 @@
 
 using namespace std;
 
-//Function Declaration
-void printList(string names[],int values[], int numberVals);
-//Precondition: A list of strings to be printed and an integer value associated with each string
-//is given along with the number of strings.
-//Postcondition: The strings followed by the value in parentheses are printed on separate lines
-//preceded by an index staring with one.
 
-void printList(string names[], int numberVals);
-//Precondition: A list of strings to be printed is given along with the number of strings.
-//Postcondition: The strings are printed on separate lines preceded by an index staring with one.
+int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue);
+//Precondition: arrayValues is an empty array of size arraySize type integer. maxValue contains the upper limit of values
+//Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
 
-const int MIN_PLAYERS = 3;
-const int MAX_PLAYERS = 6;
-int numberPlayers, startCash, iTemp;
-string temp;
-string playerName[MAX_PLAYERS];
-int playerCash[MAX_PLAYERS];
-int turnMinutes, turnSeconds;
-double turnTime;
+int turnSorter(int Cash[], int Order[], int Size);
+//Preconditions: An cash values are stored in Cash (integer) and the order is stored in Order (0 first, 1 second, ...)
+//				The size of the arrays are stored in Size
+//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
+
+
 
 int main()
 {
-    cout << "Welcome to the B&O Banker Program\n";
-    cout << "Enter the number of players: ";
-    cin >> numberPlayers;
-    while ((numberPlayers > MAX_PLAYERS) || (numberPlayers < MIN_PLAYERS))
-    {
-        cout << "Sorry, number of players needs to be " << MIN_PLAYERS << " to " << MAX_PLAYERS << ".\n";
-        cout << "Enter the number of players: ";
-        cin >> numberPlayers;
-    }
-
-    // Enter player names
-    // Going to use "i" as a counter, exception to declaring before main
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        cout << "Enter player " << i + 1 << " name: ";
-        cin >> playerName[i];
-    }
-
-    //Function Call
-    cout << "Players \n";
-    printList(playerName,numberPlayers);
-
-    // Seed random variable
-    long int currentTime = static_cast<long int>(time(0)); //Generate random seed
-    srand(currentTime);
-
-    //Assign random number to players
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        playerCash[i] = rand();
-    }
-
-    // Sort by random numbers
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        for (int j = 0; j < numberPlayers - i - 1; j++)
-        {
-            if (playerCash[j] > playerCash[j + 1])
-            {
-                temp = playerName[j];
-                iTemp = playerCash[j];
-                playerName[j] = playerName[j + 1];
-                playerCash[j] = playerCash[j + 1];
-                playerName[j + 1] = temp;
-                playerCash[j + 1] = iTemp;
-            }
-        }
-    }
-
-    //Function Call
-    cout << "Players and (random number) \n";
-    printList(playerName, playerCash, numberPlayers);
-
-    startCash = 1500 / numberPlayers; //Calculates starting cash based on number of players
-    cout << "Each player will start with $" << startCash << " in cash. \n";
-    // Initialize player cash
-    for (int i = 0; i < numberPlayers; i++)
-    {
-        playerCash[i] = startCash;
-    }
+	int numberOfPlayers;
+	int value;
+	const int MINPLAYERS = 2;
+	const int MAXPLAYERS = 6;
+	string playerName[MAXPLAYERS];
+	int playerCash[MAXPLAYERS];
+	int playerTurnOrder[MAXPLAYERS];
 
 
-    //Function Call
-    cout << "Players and (cash) \n";
-    printList(playerName, playerCash, numberPlayers);
-    return 0;
+	cout << "Welcome to the B&O Banker Assistant \n";
+
+
+	// Retrieve and validate number of players
+	cout << "How many players will be playing?";
+	cin >> numberOfPlayers;
+	while ((numberOfPlayers < MINPLAYERS) || (numberOfPlayers > MAXPLAYERS)) // Check to see if numberOfPlayer is in range
+	{
+		cout << "Number of players must be between " << MINPLAYERS << " and " << MAXPLAYERS << ". Please enter number again.";
+		cin >> numberOfPlayers;
+	}
+	cout << "There will be " << numberOfPlayers << " players.\n";// Echo number of players
+	// Read player names
+
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		cout << "Enter name of Player " << i + 1 << ": ";
+		cin >> playerName[i];
+		playerTurnOrder[i] = i; //initialize playerTurnOrder array
+	}
+	cout << endl;
+
+	// Assigning random cash values
+	randomArrayGenerator(playerCash, MAXPLAYERS, 500);
+
+	//Sort names by their cash
+
+	turnSorter(playerCash, playerTurnOrder, numberOfPlayers);
+	
+
+// Assign inital cash values to players
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		playerCash[i] = 1500 / numberOfPlayers;
+	}
+
+// Write player names in random order
+	cout << "Initial Order \n";
+	for (int i = 0; i < numberOfPlayers; i++)
+	{
+		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << playerCash[playerTurnOrder[i]] << ")" << endl;
+	}
+	cout << endl;
+
+	cout << "Enter character to continue \n";
+	cin >> value;
+
+	return(0);
 }
 
-//Function Definitions
-void printList(string names[], int values[], int numberVals)
+int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue)
 {
-    for (int i = 0; i < numberVals; i++)
-    {
-        cout << i + 1 << ": " << names[i] << " (" << values[i] << ")" << endl;
-    }
-    return;
+	//Make random number array
+	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
+	srand(currentTime);
+	for (int i = 0; i < arraySize; i++)
+	{
+		arrayValues[i] = rand() % maxValue; // assign random number
+	}
+	return(arraySize);
 }
 
-void printList(string names[], int numberVals)
+
+
+int cashSorter(int Values[], int Order[], int Size)
 {
-    for (int i = 0; i < numberVals; i++)
-    {
-        cout << i + 1 << ": " << names[i] <<  endl;
-    }
-    return;
+	int temp;
+	for (int i = 0; i < Size - 1; i++)
+	{
+		for (int j = 0; j < Size - i - 1; j++)
+		{
+			if (Values[Order[j]] > Values[Order[j + 1]])
+			{
+				temp = Order[j];
+				Order[j] = Order[j + 1];
+				Order[j + 1] = temp;
+			}
+		}
+	}
+	return(0);
 }
+
+
+
+
