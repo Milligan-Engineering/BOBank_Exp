@@ -3,8 +3,8 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game.
-//Pre Structures
-//Last Changed: 04/14/2020
+//Class Implemented
+//Last Changed: 04/15/2020
 
 
 #include <iostream>
