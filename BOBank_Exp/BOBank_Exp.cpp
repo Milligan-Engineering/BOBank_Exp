@@ -102,7 +102,7 @@ int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue)
 
 
 
-int cashSorter(int Values[], int Order[], int Size)
+int turnSorter(int Values[], int Order[], int Size)
 {
 	int temp;
 	for (int i = 0; i < Size - 1; i++)
