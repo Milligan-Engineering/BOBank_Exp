@@ -3,17 +3,15 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game.
-//Class Implemented
+//Class Implemented in File
 //Last Changed: 04/15/2020
 
 
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <time.h>
 
 
-using namespace std;
+#include "stdafx.h"
+
+#include "playersInfo.h"
 
 
 int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue);
@@ -21,31 +19,12 @@ int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue);
 //Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
 
 
-const int MINPLAYERS = 2;
-const int MAXPLAYERS = 6;
-
-class playerInfo
-{
-public:
-
-	int turnSorter(int Cash[], int Order[], int Size);
-	//Preconditions: An cash values are stored in Cash (integer) and the order is stored in Order (0 first, 1 second, ...)
-	//				The size of the arrays are stored in Size
-	//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
-
-
-	string Name[MAXPLAYERS];
-	int Cash[MAXPLAYERS];
-	int TurnOrder[MAXPLAYERS];
-
-};
-
 
 int main()
 {
 	int numberOfPlayers;
 	int value;
-	playerInfo players;
+	playersInfo players;
 
 
 	cout << "Welcome to the B&O Banker Assistant \n";
@@ -110,25 +89,6 @@ int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue)
 	return(arraySize);
 }
 
-
-
-int playerInfo::turnSorter(int Values[], int Order[], int Size)
-{
-	int temp;
-	for (int i = 0; i < Size - 1; i++)
-	{
-		for (int j = 0; j < Size - i - 1; j++)
-		{
-			if (Values[Order[j]] > Values[Order[j + 1]])
-			{
-				temp = Order[j];
-				Order[j] = Order[j + 1];
-				Order[j + 1] = temp;
-			}
-		}
-	}
-	return(0);
-}
 
 
 

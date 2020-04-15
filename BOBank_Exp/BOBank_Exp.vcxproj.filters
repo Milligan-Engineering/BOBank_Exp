@@ -18,5 +18,16 @@
     <ClCompile Include="BOBank_Exp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playersInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="playersInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
