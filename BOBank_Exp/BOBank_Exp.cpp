@@ -20,16 +20,20 @@ int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue);
 //Precondition: arrayValues is an empty array of size arraySize type integer. maxValue contains the upper limit of values
 //Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
 
-int turnSorter(int Cash[], int Order[], int Size);
-//Preconditions: An cash values are stored in Cash (integer) and the order is stored in Order (0 first, 1 second, ...)
-//				The size of the arrays are stored in Size
-//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
 
 const int MINPLAYERS = 2;
 const int MAXPLAYERS = 6;
 
-struct playerInfo
+class playerInfo
 {
+public:
+
+	int turnSorter(int Cash[], int Order[], int Size);
+	//Preconditions: An cash values are stored in Cash (integer) and the order is stored in Order (0 first, 1 second, ...)
+	//				The size of the arrays are stored in Size
+	//Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
+
+
 	string Name[MAXPLAYERS];
 	int Cash[MAXPLAYERS];
 	int TurnOrder[MAXPLAYERS];
@@ -71,7 +75,7 @@ int main()
 
 	//Sort names by their cash
 
-	turnSorter(players.Cash, players.TurnOrder, numberOfPlayers);
+	players.turnSorter(players.Cash, players.TurnOrder, numberOfPlayers);
 	
 
 // Assign inital cash values to players
@@ -108,7 +112,7 @@ int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue)
 
 
 
-int turnSorter(int Values[], int Order[], int Size)
+int playerInfo::turnSorter(int Values[], int Order[], int Size)
 {
 	int temp;
 	for (int i = 0; i < Size - 1; i++)
