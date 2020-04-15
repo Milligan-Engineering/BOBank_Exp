@@ -3,7 +3,7 @@
 //Email Address: jjgiesey@milligan.edu
 //Term Project
 //Description: This program handles banking duties in the B&O Board Game.
-//Class Implemented in File
+//Encapsulation
 //Last Changed: 04/15/2020
 
 
@@ -14,16 +14,11 @@
 #include "playersInfo.h"
 
 
-int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue);
-//Precondition: arrayValues is an empty array of size arraySize type integer. maxValue contains the upper limit of values
-//Postcondition: arrayValues will contain random values between 0 and maxValue. Returns size of array.
-
-
-
 int main()
 {
 	int numberOfPlayers;
 	int value;
+	string tempString;
 	playersInfo players;
 
 
@@ -44,30 +39,31 @@ int main()
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		cout << "Enter name of Player " << i + 1 << ": ";
-		cin >> players.Name[i];
-		players.TurnOrder[i] = i; //initialize playerTurnOrder array
+		cin >> tempString;
+		players.setName(tempString,i);
+		players.setTurnOrder(i,i); //initialize playerTurnOrder array
 	}
 	cout << endl;
 
 	// Assigning random cash values
-	randomArrayGenerator(players.Cash, MAXPLAYERS, 500);
+	players.randomCash();
 
 	//Sort names by their cash
 
-	players.turnSorter(players.Cash, players.TurnOrder, numberOfPlayers);
+	players.turnSorter(numberOfPlayers);
 
 
 	// Assign inital cash values to players
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		players.Cash[i] = 1500 / numberOfPlayers;
+		players.setCash(1500 / numberOfPlayers,i);
 	}
 
 	// Write player names in random order
 	cout << "Initial Order \n";
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		cout << i << ": " << players.Name[players.TurnOrder[i]] << "(" << players.Cash[players.TurnOrder[i]] << ")" << endl;
+		cout << i << ": " << players.getName(players.getTurnOrder(i)) << "(" << players.getCash(players.getTurnOrder(i)) << ")" << endl;
 	}
 	cout << endl;
 
@@ -76,19 +72,6 @@ int main()
 
 	return(0);
 }
-
-int randomArrayGenerator(int arrayValues[], int arraySize, int maxValue)
-{
-	//Make random number array
-	long int currentTime = static_cast<long int>(time(0)); //Generate random seed
-	srand(currentTime);
-	for (int i = 0; i < arraySize; i++)
-	{
-		arrayValues[i] = rand() % maxValue; // assign random number
-	}
-	return(arraySize);
-}
-
 
 
 
