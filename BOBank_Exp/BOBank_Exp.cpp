@@ -25,17 +25,23 @@ int turnSorter(int Cash[], int Order[], int Size);
 //				The size of the arrays are stored in Size
 //Postcondition: The array Order holds index of the smallest value in its 0 index, the second smallest in 1 ...
 
+const int MINPLAYERS = 2;
+const int MAXPLAYERS = 6;
+
+struct playerInfo
+{
+	string Name[MAXPLAYERS];
+	int Cash[MAXPLAYERS];
+	int TurnOrder[MAXPLAYERS];
+
+};
 
 
 int main()
 {
 	int numberOfPlayers;
 	int value;
-	const int MINPLAYERS = 2;
-	const int MAXPLAYERS = 6;
-	string playerName[MAXPLAYERS];
-	int playerCash[MAXPLAYERS];
-	int playerTurnOrder[MAXPLAYERS];
+	playerInfo players;
 
 
 	cout << "Welcome to the B&O Banker Assistant \n";
@@ -55,30 +61,30 @@ int main()
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		cout << "Enter name of Player " << i + 1 << ": ";
-		cin >> playerName[i];
-		playerTurnOrder[i] = i; //initialize playerTurnOrder array
+		cin >> players.Name[i];
+		players.TurnOrder[i] = i; //initialize playerTurnOrder array
 	}
 	cout << endl;
 
 	// Assigning random cash values
-	randomArrayGenerator(playerCash, MAXPLAYERS, 500);
+	randomArrayGenerator(players.Cash, MAXPLAYERS, 500);
 
 	//Sort names by their cash
 
-	turnSorter(playerCash, playerTurnOrder, numberOfPlayers);
+	turnSorter(players.Cash, players.TurnOrder, numberOfPlayers);
 	
 
 // Assign inital cash values to players
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		playerCash[i] = 1500 / numberOfPlayers;
+		players.Cash[i] = 1500 / numberOfPlayers;
 	}
 
 // Write player names in random order
 	cout << "Initial Order \n";
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
-		cout << i << ": " << playerName[playerTurnOrder[i]] << "(" << playerCash[playerTurnOrder[i]] << ")" << endl;
+		cout << i << ": " << players.Name[players.TurnOrder[i]] << "(" << players.Cash[players.TurnOrder[i]] << ")" << endl;
 	}
 	cout << endl;
 
