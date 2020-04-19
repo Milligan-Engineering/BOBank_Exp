@@ -21,7 +21,6 @@ public:
 	// Precondition: index of name to get is in index
 	// Postcondition: Name of index is returned
 
-
 	int getCash(int index);
 	// Precondition: index of cash to get is in index
 	// Postcondition: Cash of index is returned
